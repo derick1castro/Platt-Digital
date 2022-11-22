@@ -24,7 +24,7 @@ const AddSolucao = () => {
     });
 
     const data = await api
-      .post("solucoes/create", formData, {
+      .post("/solucoes/create", formData, {
         Authorization: `Bearer ${JSON.parse(token)}`,
         "Content-Type": "multipart/form-data",
       })
@@ -36,10 +36,8 @@ const AddSolucao = () => {
         return err.response.data;
       });
 
-    setFlashMessage(data.message, msgType);
-
     if (msgType !== "error") {
-      navigate("/solucoes/minhassolucoes");
+      navigate("/solucoes");
     }
   }
 

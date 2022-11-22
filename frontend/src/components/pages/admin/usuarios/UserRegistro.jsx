@@ -19,7 +19,7 @@ const UserRegistro = () => {
   return (
     <>
       
-      <section className="max-w-[350px] mx-auto">
+      <section className='mx-[30px]'>
         <h1 className="text-[#009CC2] text-3xl font-bold my-10">
           Convidar Usuário
         </h1>

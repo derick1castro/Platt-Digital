@@ -16,6 +16,13 @@ import Empresas from "./components/pages/admin/empresas/Empresas";
 import AdminIndtechs from "./components/pages/admin/indtechs/AdminIndtechs";
 import User from "./components/pages/admin/usuarios/User";
 import IndtechDetails from "./components/pages/user/indtechs/IndtechsDetails";
+import SolucoesDetalhes from "./components/pages/user/solucoes/SolucoesDetalhes";
+import Paradas from "./components/pages/user/solucoes/filtros/Paradas";
+import Engenharia from "./components/pages/user/solucoes/filtros/Engenharia";
+import Logistica from "./components/pages/user/solucoes/filtros/Logistica";
+import Planejamento from "./components/pages/user/solucoes/filtros/Planejamento";
+import Esg from "./components/pages/user/solucoes/filtros/Esg";
+import Contato from './components/form/ContatoForm'
 
 export function App() {
   return (
@@ -27,6 +34,14 @@ export function App() {
             <Route path="/solucoes" element={<UserSolucoes />} />
             <Route path="/indtechs" element={<Indtechs />} />
             <Route path="/indtechs/:id" element={<IndtechDetails />} />
+            <Route path="/solucoes/:id" element={<SolucoesDetalhes />} />
+            <Route path="/paradas" element={<Paradas />} />
+            <Route path="/engenharia" element={<Engenharia />} />
+            <Route path="/logistica" element={<Logistica />} />
+            <Route path="/planejamento" element={<Planejamento />} />
+            <Route path="/esg" element={<Esg />} />
+            <Route path="/contato" element={<Contato />} />
+            
           </Routes>
         </UserProvider>
         <AdminProvider>

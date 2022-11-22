@@ -3,7 +3,8 @@ import api from "../../../../utils/api";
 import { Link } from "react-router-dom";
 import AdminNavbar from "../../../UI/AdminNavbar";
 // import useFlashMessage from "../../../hooks/useFlashMessage";
-// import ModalBarra from "../../layout/ModalBarra";
+import ModalIndtech from "../../../UI/ModalIndtech";
+import AddIntech from "./AddIndtech";
 // import AddSolucao from "./AddSolucao";
 
 const AdminIndtechs = () => {
@@ -54,12 +55,9 @@ const AdminIndtechs = () => {
         {indtechs.length > 0 ? (
           <>
             <div className="bg-[#001c23] flex justify-end">
-              <button className="text-white bg-blue hover:bg-darkBlue duration-400 transition ease-in-out py-3 m-[20px] px-8 rounded-md text-md">
-                <Link to="/admin/solucoes/add">Adicionar Indtech</Link>
-              </button>
-              {/* <ModalBarra text="Nova solução">
-                <AddSolucao />{" "}
-              </ModalBarra> */}
+              <ModalIndtech text="Adicionar Indtech">
+                <AddIntech />
+              </ModalIndtech>
             </div>
             <div className="flex m-[50px] items-center justify-between mt-[70px]">
               <div className="text-blue text-2xl font-medium flex items-center">
@@ -104,9 +102,9 @@ const AdminIndtechs = () => {
               <p>Ainda não há soluções cadastrados no sistema.</p>
               <p>Deseja cadastrar novas soluções?</p>
               <div>
-                <button className="text-white bg-blue hover:bg-darkBlue duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md">
-                  <Link to="/indtechs/add">Nova solução</Link>
-                </button>
+                <ModalIndtech text="Adicionar Indtech">
+                  <AddIntech />
+                </ModalIndtech>
               </div>
             </div>
           </section>

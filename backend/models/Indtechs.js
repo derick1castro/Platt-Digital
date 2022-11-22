@@ -19,6 +19,21 @@ const Indtechs = mongoose.model(
       images: {
         type: Array,
       },
+      paradasDeManutencao: {
+        type: String,
+      },
+      EngenhariaEManutencao: {
+        type: String,
+      },
+      LogisticaEBackoffice: {
+        type: String,
+      },
+      planejamentoEControle: {
+        type: String,
+      },
+      Esg: {
+        type: String,
+      },
     },
     { timestamps: true }
   )

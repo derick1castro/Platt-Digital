@@ -4,6 +4,7 @@ import ModalBarra from "../../../UI/ModalBarra";
 import { Link } from "react-router-dom";
 import AddEmpresa from "./AddEmpresa";
 import api from "../../../../utils/api";
+import ModalEmpresa from "../../../UI/ModalEmpresa";
 
 function Empresas() {
   const [company, setCompany] = useState([]);
@@ -49,9 +50,9 @@ function Empresas() {
         {company.length > 0 ? (
           <>
             <div className="bg-[#001c23]">
-              <ModalBarra text="Cadastrar Empresa">
+              <ModalEmpresa text="Cadastrar Empresa">
                 <AddEmpresa />
-              </ModalBarra>
+              </ModalEmpresa>
             </div>
 
             <div className="flex m-[50px] items-center justify-between mt-[70px]">

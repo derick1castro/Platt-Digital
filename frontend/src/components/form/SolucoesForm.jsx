@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Input from "../UI/Input";
+import InputCheckbox from "../UI/InputCheckbox";
 import InputSimples from "../UI/InputSimples";
 import InputText from "../UI/InputText";
+import InputTextArea from "../UI/InputTextArea";
+import SelectIndtechs from "../UI/SelectIndtechs";
 
 const SolucoesForm = ({ handleSubmit, solucoesData, btnText }) => {
   const [solucoes, setSolucoes] = useState(solucoesData || {});
@@ -12,8 +15,16 @@ const SolucoesForm = ({ handleSubmit, solucoesData, btnText }) => {
     setSolucoes({ ...solucoes, images: [...e.target.files] });
   }
 
+  // function handleChange(e) {
+  //   setSolucoes({ ...solucoes, [e.target.name]: e.target.value });
+  // }
   function handleChange(e) {
-    setSolucoes({ ...solucoes, [e.target.name]: e.target.value });
+    const value =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    setSolucoes({
+      ...solucoes,
+      [e.target.name]: value,
+    });
   }
 
   function submit(e) {
@@ -24,13 +35,13 @@ const SolucoesForm = ({ handleSubmit, solucoesData, btnText }) => {
 
   return (
     <>
-      <section className="max-w-[80%] mx-auto text-[#009cc2] space-y-8 mb-4">
-        <h1 className="text-3xl font-bold">Nova Solução</h1>
+      <section className="max-w-[80%] mx-auto  space-y-8 mb-4">
+        <h1 className="text-3xl font-bold text-[#009cc2]">Nova Solução</h1>
         <form className="space-y-4" onSubmit={submit}>
-          <p className="text-xl font-bold">Resumo</p>
+          <p className="text-xl font-bold text-[#009cc2]">Resumo</p>
           <div>
             <div className="flex justify-start my-4 ml-8">
-              {/* {preview.length > 0
+              {preview.length > 0
                 ? preview.map((image1, index) => (
                     <img
                       className="w-[200px] h-[150px]"
@@ -46,16 +57,14 @@ const SolucoesForm = ({ handleSubmit, solucoesData, btnText }) => {
                       alt={solucoes.titulo}
                       key={`${solucoes.titulo} + ${index}`}
                     />
-                  ))} */}
+                  ))}
             </div>
           </div>
-
           <Input
             text="Imagem da solução"
             type="file"
             name="images1"
             handleOnChange={onFileChange}
-            
             multiple
           />
           <Input
@@ -66,179 +75,213 @@ const SolucoesForm = ({ handleSubmit, solucoesData, btnText }) => {
             handleOnChange={handleChange}
             value={solucoes.titulo || ""}
           />
-          <InputText
-            text="Descrição da solução com X caracteres"
+          <InputTextArea
+            text="Descrição curta com até 55 caracteres"
+            type="text"
+            name="descricaoCurta"
+            placeholder="Add text"
+            maxLength={55}
+            handleOnChange={handleChange}
+            value={solucoes.descricaoCurta || ""}
+          />
+          <InputTextArea
+            text="Descrição Longa"
+            type="text"
+            name="descricao"
+            placeholder="Add text"
+            maxLength={800}
+            handleOnChange={handleChange}
+            value={solucoes.descricao || ""}
+          />
+          {/* <InputText
+            text="Descrição Longa"
             type="text"
             name="descricao"
             placeholder="Add text"
             handleOnChange={handleChange}
             value={solucoes.descricao || ""}
-          />
-          <InputSimples
+          /> */}
+          {/* <InputSimples
             text="Características"
             type="text"
             name="caracteristicas"
             placeholder="Add text"
             handleOnChange={handleChange}
             value={solucoes.caracteristicas || ""}
+          /> */}
+          <SelectIndtechs
+            text="Indtech"
+            name="indtech"
+            handleOnChange={handleChange}
           />
-
-          <Input
+          {/* <Input
             text="Indtech que realiza"
             type="text"
             name="indtech"
             placeholder="Add text"
             handleOnChange={handleChange}
             value={solucoes.indtech || ""}
-          />
-
+          /> */}
           <Input
             text="Características"
             type="text"
-            name="caracteristicas"
+            name="caracteristicas1"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
-          />
-
-          <InputSimples
-            text="Características"
-            type="text"
-            name="caracteristicas"
-            placeholder="Add text"
-            handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.caracteristicas1 || ""}
           />
           <InputSimples
-            text="Características"
             type="text"
-            name="caracteristicas"
+            name="caracteristicas2"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.caracteristicas2 || ""}
           />
           <InputSimples
-            text="Características"
             type="text"
-            name="caracteristicas"
+            name="caracteristicas3"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.caracteristicas3 || ""}
           />
           <InputSimples
-            text="Características"
             type="text"
-            name="caracteristicas"
+            name="caracteristicas4"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.caracteristicas4 || ""}
+          />
+          <InputSimples
+            type="text"
+            name="caracteristicas5"
+            placeholder="Add text"
+            handleOnChange={handleChange}
+            value={solucoes.caracteristicas5 || ""}
           />
           <Input
             text="Dores que atende"
             type="text"
-            name="dores"
+            name="dores1"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.dores || ""}
+            value={solucoes.dores1 || ""}
           />
           <InputSimples
-            text="Características"
             type="text"
-            name="caracteristicas"
+            name="dores2"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.dores2 || ""}
           />
           <InputSimples
-            text="Características"
             type="text"
-            name="caracteristicas"
+            name="dores3"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.dores3 || ""}
           />
           <InputSimples
-            text="Características"
             type="text"
-            name="caracteristicas"
+            name="dores4"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.dores4 || ""}
           />
           <InputSimples
-            text="Características"
             type="text"
-            name="caracteristicas"
+            name="dores5"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.dores5 || ""}
           />
 
           <p className="text-xl font-bold">Case</p>
 
-          {/* <Input
-            text="Depoimentos"
+          <InputSimples
+            text="Case 1:"
             type="text"
-            name="depoimentos"
+            name="case1"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.depoimentos || ""}
-          />
-
-          <Input
-            text="Autor do Depoimento"
-            type="text"
-            name="autorDepoimento"
-            placeholder="Add text"
-            handleOnChange={handleChange}
-            value={solucoes.autorDepoimento || ""}
-          /> */}
-
-          <Input
-            text="Link para case (opcional)"
-            type="text"
-            name="linkCase"
-            placeholder="Add text"
-            handleOnChange={handleChange}
-            value={solucoes.linkCase || ""}
+            value={solucoes.case1 || ""}
           />
           <InputSimples
-            text="Características"
+            text="Link para case 1 (opcional):"
             type="text"
-            name="caracteristicas"
+            name="linkCase1"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.linkCase1 || ""}
           />
           <InputSimples
-            text="Características"
+            text="Case 2:"
             type="text"
-            name="caracteristicas"
+            name="case2"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.case2 || ""}
           />
           <InputSimples
-            text="Características"
+            text="Link para case 2 (opcional):"
             type="text"
-            name="caracteristicas"
+            name="linkCase2"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.linkCase2 || ""}
           />
           <InputSimples
-            text="Características"
+            text="Case 3:"
             type="text"
-            name="caracteristicas"
+            name="case3"
             placeholder="Add text"
             handleOnChange={handleChange}
-            value={solucoes.caracteristicas || ""}
+            value={solucoes.case3 || ""}
+          />
+          <InputSimples
+            text="Link para case 3 (opcional):"
+            type="text"
+            name="linkCase3"
+            placeholder="Add text"
+            handleOnChange={handleChange}
+            value={solucoes.linkCase3 || ""}
+          />
+          <InputSimples
+            text="Case 4:"
+            type="text"
+            name="case4"
+            placeholder="Add text"
+            handleOnChange={handleChange}
+            value={solucoes.case4 || ""}
+          />
+          <InputSimples
+            text="Link para case 4 (opcional):"
+            type="text"
+            name="linkCase4"
+            placeholder="Add text"
+            handleOnChange={handleChange}
+            value={solucoes.linkCase4 || ""}
+          />
+          <InputSimples
+            text="Case 5:"
+            type="text"
+            name="case4"
+            placeholder="Add text"
+            handleOnChange={handleChange}
+            value={solucoes.case4 || ""}
+          />
+          <InputSimples
+            text="Link para case 5 (opcional):"
+            type="text"
+            name="linkCase5"
+            placeholder="Add text"
+            handleOnChange={handleChange}
+            value={solucoes.linkCase5 || ""}
           />
 
           <div>
             <p className="flex text-xl font-bold">Clientes</p>
             <div className="flex justify-start my-4 space-x-4 ml-8">
-              {/* {preview.length > 0
+              {preview.length > 0
                 ? preview.map((image, index) => (
                     <img
                       src={URL.createObjectURL(image)}
@@ -253,7 +296,7 @@ const SolucoesForm = ({ handleSubmit, solucoesData, btnText }) => {
                       alt={solucoes.titulo}
                       key={`${solucoes.titulo} + ${index}`}
                     />
-                  ))} */}
+                  ))}
             </div>
           </div>
 
@@ -262,42 +305,45 @@ const SolucoesForm = ({ handleSubmit, solucoesData, btnText }) => {
             type="file"
             name="images2"
             handleOnChange={onFileChange}
-            
             multiple
           />
           <div className="flex flex-col">
             <p className="text-xl font-bold">Categorização</p>
-            <p>Setor</p>
-            <div>
-              <input id="setor" type="checkbox" />
-              <label className="ml-3" htmlFor="setor">
-                Paradas de manutenção
-              </label>
-            </div>
-            <div>
-              <input id="setor" type="checkbox" />
-              <label className="ml-3" htmlFor="setor">
-                Engenharia e Manutenção
-              </label>
-            </div>
-            <div>
-              <input id="setor" type="checkbox" />
-              <label className="ml-3" htmlFor="setor">
-                Logística e Backoffice
-              </label>
-            </div>
-            <div>
-              <input id="setor" type="checkbox" />
-              <label className="ml-3" htmlFor="setor">
-                Planejamento e Controle
-              </label>
-            </div>
-            <div>
-              <input id="setor" type="checkbox" />
-              <label className="ml-3" htmlFor="setor">
-                ESG
-              </label>
-            </div>
+            <InputCheckbox
+              text="Paradas de manutenção"
+              type="checkbox"
+              name="paradasDeManutencao"
+              handleOnChange={handleChange}
+              value={solucoes.paradasDeManutencao || false}
+            />
+            <InputCheckbox
+              text="Engenharia e Manutenção"
+              type="checkbox"
+              name="EngenhariaEManutencao"
+              handleOnChange={handleChange}
+              value={solucoes.EngenhariaEManutencao || false}
+            />
+            <InputCheckbox
+              text="Logística e Backoffice"
+              type="checkbox"
+              name="LogisticaEBackoffice"
+              handleOnChange={handleChange}
+              value={solucoes.LogisticaEBackoffice || false}
+            />
+            <InputCheckbox
+              text="Planejamento e Controle"
+              type="checkbox"
+              name="planejamentoEControle"
+              handleOnChange={handleChange}
+              value={solucoes.planejamentoEControle || false}
+            />
+            <InputCheckbox
+              text="ESG"
+              type="checkbox"
+              name="Esg"
+              handleOnChange={handleChange}
+              value={solucoes.Esg || false}
+            />
           </div>
 
           <input

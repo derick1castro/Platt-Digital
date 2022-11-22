@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import api from "../../../../utils/api";
-import { Link } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import AdminNavbar from "../../../UI/AdminNavbar";
 // import useFlashMessage from "../../../hooks/useFlashMessage";
 // import ModalBarra from "../../layout/ModalBarra";
 // import AddSolucao from "./AddSolucao";
 
-const Solucoes = () => {
+const Solucoes = (props) => {
+  console.log(props);
+  const filter = useLocation();
+  console.log(filter);
   const [solucoes, setSolucoes] = useState([]);
   const [token] = useState(localStorage.getItem("token") || "");
   // const { setFlashMessage } = useFlashMessage;
 
   useEffect(() => {
     api
-      .get("/solucoes/minhassolucoes", {
+      .get(`/solucoes/minhassolucoes${filter.search}`, {
         headers: {
           Authorization: `Bearer ${JSON.parse(token)}`,
         },
@@ -114,7 +117,7 @@ const Solucoes = () => {
               <p>Deseja cadastrar novas soluções?</p>
               <div>
                 <button className="text-white bg-blue hover:bg-darkBlue duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md">
-                  <Link to="/solucoes/add">Nova solução</Link>
+                  <Link to="/admin/solucoes/add">Nova solução</Link>
                 </button>
               </div>
             </div>

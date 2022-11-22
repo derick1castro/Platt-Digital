@@ -11,7 +11,7 @@ function InputSimples({
       <label
         className="mb-2 font-bold text-sm text-label"
         htmlFor={name}
-      ></label>
+      >{text}</label>
       <input
         className="py-1 px-2 border rounded"
         type={type}

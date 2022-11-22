@@ -8,7 +8,16 @@ const ObjectId = require("mongoose").Types.ObjectId;
 module.exports = class IndtechsController {
   // create solution
   static async create(req, res) {
-    const { titulo, descricao, caracteristicas } = req.body;
+    const {
+      titulo,
+      descricao,
+      caracteristicas,
+      paradasDeManutencao,
+      EngenhariaEManutencao,
+      LogisticaEBackoffice,
+      planejamentoEControle,
+      Esg,
+    } = req.body;
 
     // images upload
     console.log("aqui está", req.files);
@@ -39,11 +48,16 @@ module.exports = class IndtechsController {
       titulo,
       descricao,
       caracteristicas,
+      paradasDeManutencao,
+      EngenhariaEManutencao,
+      LogisticaEBackoffice,
+      planejamentoEControle,
+      Esg,
       images: [],
       admin: {
         _id: admin._id,
         name: admin.name,
-        image: admin.image,
+        images: admin.images,
       },
     });
 
@@ -122,7 +136,16 @@ module.exports = class IndtechsController {
   static async UpdateIndtechs(req, res) {
     const id = req.params.id;
 
-    const { titulo, descricao, caracteristicas } = req.body;
+    const {
+      titulo,
+      descricao,
+      caracteristicas,
+      paradasDeManutencao,
+      EngenhariaEManutencao,
+      LogisticaEBackoffice,
+      planejamentoEControle,
+      Esg,
+    } = req.body;
 
     const images = req.files;
 
@@ -152,9 +175,35 @@ module.exports = class IndtechsController {
     }
 
     if (caracteristicas) {
-      updatedData.caracteristicas1 = caracteristicas1;
+      updatedData.caracteristicas = caracteristicas;
       return;
     }
+
+    if (paradasDeManutencao) {
+      updatedData.paradasDeManutencao = paradasDeManutencao;
+      return;
+    }
+
+    if (EngenhariaEManutencao) {
+      updatedData.EngenhariaEManutencao = EngenhariaEManutencao;
+      return;
+    }
+
+    if (LogisticaEBackoffice) {
+      updatedData.LogisticaEBackoffice = LogisticaEBackoffice;
+      return;
+    }
+
+    if (planejamentoEControle) {
+      updatedData.planejamentoEControle = planejamentoEControle;
+      return;
+    }
+
+    if (Esg) {
+      updatedData.Esg = Esg;
+      return;
+    }
+
     if (images.length > 0) {
       updatedData.images = [];
       images.map((image) => {

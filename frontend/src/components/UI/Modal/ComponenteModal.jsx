@@ -12,9 +12,9 @@ const ComponenteModal = ({ id = "modal", onClose = () => {}, children }) => {
       onClick={handleOutSideClick}
     >
       {/* container */}
-      <div className="bg-[#fff] text-[#000] w-[25%] h-[80%] flex justify-center items-center ">
+      <div className="rounded-lg bg-[#fff] text-[rgba(0,0,0,0.40)] w-[65%] sm:w-[400px]  flex justify-center items-center">
         {/* content */}
-        <div className="flex flex-col w-full">{children}</div>
+        <div className="flex flex-col w-full h-[38rem]">{children}</div>
       </div>
     </div>
   );

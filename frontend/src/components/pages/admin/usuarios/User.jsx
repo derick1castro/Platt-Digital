@@ -70,6 +70,22 @@ const User = () => {
             <UserRegistro />
           </ModalBarra>
         </div>
+        {/* <button className="text-white bg-blue hover:bg-darkBlue duration-400 transition ease-in-out py-3 m-[20px] px-8 rounded-md text-md">
+          <Link
+            to="/admin/solucoes?paradasDeManutenção=true"
+            
+          >
+            filter
+          </Link>
+        </button>
+        <button className="text-white bg-blue hover:bg-darkBlue duration-400 transition ease-in-out py-3 m-[20px] px-8 rounded-md text-md">
+          <Link
+            to="/admin/solucoes?Esg=true"
+            
+          >
+            filter2
+          </Link>
+        </button> */}
         <nav className="h-[5rem]">
           <ul className="flex items-center list-none m-[50px] space-x-8">
             <li className="cursor-pointer font-medium py-2 text-[#68787b] hover:text-[#00abd6] transition ease-in-out duration-400 hover:border-b-2 hover:border-[#00abd6]">
@@ -141,9 +157,12 @@ const User = () => {
             <p>Ainda não há usuários cadastrados no sistema.</p>
             <p>Deseja convidar novos usuários?</p>
             <div>
-              <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md">
+              {/* <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md">
                 <Link to="/register">Convidar usuários</Link>
-              </button>
+              </button> */}
+              <ModalBarra text="Convidar Usuário">
+                <UserRegistro />
+              </ModalBarra>
             </div>
           </div>
         )}

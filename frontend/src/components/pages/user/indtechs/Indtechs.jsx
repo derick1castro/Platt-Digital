@@ -36,18 +36,18 @@ function Indtechs() {
         <div className="flex flex-wrap justify-center">
           {indtechs.map((indtech) => (
             <section
-              className="w-[994px] h-[180px] flex rounded-lg m-5 shadow-xl bg-white"
+              className="md:flex rounded-lg m-5 shadow-xl bg-white"
               key={indtech._id}
             >
-              <div className="min-w-[398px] flex rounded-lg justify-center items-center bg-bgBlue">
+              <div className="min-w-[398px] md:w-[290px] flex rounded-lg justify-center items-center bg-bgBlue">
                 <img src={ambisis} className="rounded-lg" />
               </div>
-              <div className="flex flex-col mt-[13px] ml-[25px] mb text-body w-full">
+              <div className="flex w-[400px] md:w-[280px] xl:w-[400px] flex-col mt-[13px] mx-[25px] mb text-body">
                 <span className="font-bold ">{indtech.titulo}</span>
-                <span className="text-sm font-medium mt-[8px] w-[503px] text-body mb-[18px]">
+                <span className="text-sm font-medium mt-[8px] md:w-[290px] xl:w-[400px] text-body mb-[18px]">
                   {indtech.descricao}
                 </span>
-                <div className="flex justify-end mr-[17px]">
+                <div className="flex justify-end mb-[20px]">
                   <button className="text-white bg-blue hover:bg-darkBlue duration-400 transition font-bold ease-in-out py-[6px] px-4 rounded-lg mt-[10px] w-[200px] text-xs">
                     <Link to={`/indtechs/${indtech._id}`}>
                       Conhecer soluções da indtech

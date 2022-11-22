@@ -5,7 +5,7 @@ function Input({ type, text, name, placeholder, handleOnChange, value }) {
         {text}:
       </label>
       <input
-        className="py-1 px-2 border rounded"
+        className="py-1 px-2 border rounded font-normal"
         type={type}
         name={name}
         id={name}

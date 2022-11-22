@@ -29,7 +29,7 @@ function EmpresasForm({ handleSubmit, companyData, btnText }) {
         <input
           type="submit"
           value={btnText}
-          className="text-white bg-blue hover:bg-darkBlue duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md"
+          className="text-white bg-blue hover:bg-darkBlue duration-400 transition ease-in-out py-3 my-[30px] px-8 rounded-md text-md"
         />
       </form>
     </section>

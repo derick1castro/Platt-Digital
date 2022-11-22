@@ -13,6 +13,10 @@ const Solucoes = mongoose.model(
         type: String,
         required: true,
       },
+      descricaoCurta: {
+        type: String,
+        required: true,
+      },
       indtech: {
         type: String,
         required: true,
@@ -62,11 +66,41 @@ const Solucoes = mongoose.model(
       case5: {
         type: String,
       },
+      linkCase1: {
+        type: String,
+      },
+      linkCase2: {
+        type: String,
+      },
+      linkCase3: {
+        type: String,
+      },
+      linkCase4: {
+        type: String,
+      },
+      linkCase5: {
+        type: String,
+      },
       images1: {
         type: Array,
       },
       images2: {
         type: Array,
+      },
+      paradasDeManutencao: {
+        type: String,
+      },
+      EngenhariaEManutencao: {
+        type: String,
+      },
+      LogisticaEBackoffice: {
+        type: String,
+      },
+      planejamentoEControle: {
+        type: String,
+      },
+      Esg: {
+        type: String,
       },
     },
     { timestamps: true }

@@ -11,6 +11,7 @@ module.exports = class SolucoesController {
     const {
       titulo,
       descricao,
+      descricaoCurta,
       indtech,
       caracteristicas1,
       caracteristicas2,
@@ -27,10 +28,20 @@ module.exports = class SolucoesController {
       case3,
       case4,
       case5,
+      linkCase1,
+      linkCase2,
+      linkCase3,
+      linkCase4,
+      linkCase5,
+      paradasDeManutencao,
+      EngenhariaEManutencao,
+      LogisticaEBackoffice,
+      planejamentoEControle,
+      Esg,
     } = req.body;
 
     // images upload
-    console.log("aqui está", req.files);
+    // console.log("aqui está", req.files);
     const { images1, images2 } = req.files;
 
     // validations
@@ -40,7 +51,11 @@ module.exports = class SolucoesController {
     }
 
     if (!descricao) {
-      res.status(422).json({ message: "A descrição é obrigatória!" });
+      res.status(422).json({ message: "A descrição longa é obrigatória!" });
+      return;
+    }
+    if (!descricaoCurta) {
+      res.status(422).json({ message: "A descrição curta é obrigatória!" });
       return;
     }
 
@@ -49,25 +64,25 @@ module.exports = class SolucoesController {
       return;
     }
 
-    if (images1.length === 0) {
-      res.status(422).json({ message: "A imagem é obrigatória!" });
-      return;
-    }
+    // if (images1.length === 0) {
+    //   res.status(422).json({ message: "A imagem é obrigatória!" });
+    //   return;
+    // }
 
-    if (images2.length === 0) {
-      res.status(422).json({ message: "A imagem é obrigatória!" });
-      return;
-    }
+    // if (images2.length === 0) {
+    //   res.status(422).json({ message: "A imagem é obrigatória!" });
+    //   return;
+    // }
 
     // get user
     const token = getToken(req);
     const admin = getAdminByToken(token);
 
     // create solution
-
     const solucoes = new Solucoes({
       titulo,
       descricao,
+      descricaoCurta,
       indtech,
       caracteristicas1,
       caracteristicas2,
@@ -84,6 +99,16 @@ module.exports = class SolucoesController {
       case3,
       case4,
       case5,
+      linkCase1,
+      linkCase2,
+      linkCase3,
+      linkCase4,
+      linkCase5,
+      paradasDeManutencao,
+      EngenhariaEManutencao,
+      LogisticaEBackoffice,
+      planejamentoEControle,
+      Esg,
       images1: [],
       images2: [],
       admin: {
@@ -94,13 +119,13 @@ module.exports = class SolucoesController {
       },
     });
 
-    images1.map((image1) => {
-      solucoes.images1.push(image1.filename);
-    });
+    // images1.map((image1) => {
+    //   solucoes.images1.push(image1.filename);
+    // });
 
-    images2.map((image2) => {
-      solucoes.images2.push(image2.filename);
-    });
+    // images2.map((image2) => {
+    //   solucoes.images2.push(image2.filename);
+    // });
 
     try {
       const newSolucoes = await solucoes.save();
@@ -122,7 +147,7 @@ module.exports = class SolucoesController {
   }
 
   static async getAllSolucoes(req, res) {
-    const solucoes = await Solucoes.find().sort("-createdAt");
+    const solucoes = await Solucoes.find(req.query).sort("-createdAt");
 
     res.status(200).json({
       solucoes,
@@ -176,6 +201,7 @@ module.exports = class SolucoesController {
     const {
       titulo,
       descricao,
+      descricaoCurta,
       indtech,
       caracteristicas1,
       caracteristicas2,
@@ -192,6 +218,16 @@ module.exports = class SolucoesController {
       case3,
       case4,
       case5,
+      linkCase1,
+      linkCase2,
+      linkCase3,
+      linkCase4,
+      linkCase5,
+      categorizacao1,
+      categorizacao2,
+      categorizacao3,
+      categorizacao4,
+      categorizacao5,
     } = req.body;
 
     const { images1, images2 } = req.files;
@@ -215,10 +251,17 @@ module.exports = class SolucoesController {
     }
 
     if (!descricao) {
-      res.status(422).json({ message: "A descrição é obrigatória!" });
+      res.status(422).json({ message: "A descrição longa é obrigatória!" });
       return;
     } else {
       updatedData.descricao = descricao;
+    }
+
+    if (!descricaoCurta) {
+      res.status(422).json({ message: "A descrição curta é obrigatória!" });
+      return;
+    } else {
+      updatedData.descricaoCurta = descricaoCurta;
     }
 
     if (!indtech) {
@@ -287,6 +330,46 @@ module.exports = class SolucoesController {
     }
     if (case5) {
       updatedData.case5 = case5;
+      return;
+    }
+    if (linkCase1) {
+      updatedData.linkCase1 = linkCase1;
+      return;
+    }
+    if (linkCase2) {
+      updatedData.linkCase2 = linkCase2;
+      return;
+    }
+    if (linkCase3) {
+      updatedData.linkCase3 = linkCase3;
+      return;
+    }
+    if (linkCase4) {
+      updatedData.linkCase4 = linkCase4;
+      return;
+    }
+    if (linkCase5) {
+      updatedData.linkCase5 = linkCase5;
+      return;
+    }
+    if (categorizacao1) {
+      updatedData.categorizacao1 = categorizacao1;
+      return;
+    }
+    if (categorizacao2) {
+      updatedData.categorizacao2 = categorizacao2;
+      return;
+    }
+    if (categorizacao3) {
+      updatedData.categorizacao3 = categorizacao3;
+      return;
+    }
+    if (categorizacao4) {
+      updatedData.categorizacao4 = categorizacao4;
+      return;
+    }
+    if (categorizacao5) {
+      updatedData.categorizacao5 = categorizacao5;
       return;
     }
 

@@ -47,7 +47,7 @@ function AddEmpresa() {
   }
 
   return (
-    <section>
+    <section className="mx-[30px]">
       <div className="space-y-9 mt-[50px]">
         <h1 className="text-3xl text-blue font-bold">Nova Empresa</h1>
         <h2 className="text-blue font-bold">Dados da empresa</h2>
